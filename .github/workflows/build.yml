@@ -40,6 +40,8 @@ jobs:
           rm ${CARGO_HOME}/config.toml || true
           rm -rf rm ${CARGO_HOME}/registry/* || true
       - uses: actions/checkout@v4
+      - name: Add RISCV-V target
+        run: rustup target add riscv64gc-unknown-none-elf
       - name: Run tests
         run: |
           qemu-system-riscv64 --version
